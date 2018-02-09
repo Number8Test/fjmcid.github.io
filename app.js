@@ -42,11 +42,25 @@
 
                 for (i = 0; i < numberOfWeeks; i++) {
                     weeks[i] = [];
+                    for (j = 0; j < 7; j++) {
+                        weeks[i][j] = { 'number': '', 'description': '', 'holiday': false };
+                        if (i == 0 && j < 1) {
+                            //first week, normally incomplete
+                        } else {
+                            if (daysNumber <= daysInMonth) {
+                                weeks[i][j].number = daysNumber;
+                                weeks[i][j].description = 'Normal Day';
+                                daysProcessed++
+                            }
+                            daysNumber++;
+                        }
+                    }
+                    date = new Date(c.year, c.currentMonth + 1, 1);
                 }
 
                 var month = {
                     'monthName': monthName,
-                    'weeks': []
+                    'weeks': weeks
                 };
                 c.dates.push(month);
             }
