@@ -48,11 +48,21 @@
                             //first week, normally incomplete
                         } else {
                             if (daysNumber <= daysInMonth) {
-                                weeks[i][j].number = daysNumber;
-                                weeks[i][j].description = 'Normal Day';
-                                daysProcessed++
+                                if (daysNumber >= c.today &&
+                                    c.currentMonth >= startingMonth &&
+                                    daysProcessed <= c.days) {
+                                    var currentDate = new Date(c.year, c.currentMonth, daysNumber);
+                                    var h = getHoliday(currentDate);
+                                    weeks[i][j].number = daysNumber;
+                                    weeks[i][j].description = 'Normal Day';
+                                    if (h !== undefined) {
+                                        weeks[i][j].holiday = true;
+                                        weeks[i][j].description = h.name;
+                                    }
+                                    daysProcessed++
+                                }
+                                daysNumber++;
                             }
-                            daysNumber++;
                         }
                     }
                     date = new Date(c.year, c.currentMonth + 1, 1);
@@ -70,6 +80,15 @@
         function getDaysInMonth(month, year) {
             return new Date(year, month, 0).getDate();
         };
+
+        function getHoliday(currentDate) {
+            var holiday;
+            var x = c.holidays[currentDate.toISOString().split('T')[0]];
+            angular.forEach(x, function(h) {
+                if (h.public) holiday = h;
+            });
+            return holiday;
+        }
 
         function GetHolidays() {
             var date = new Date();
