@@ -23,7 +23,7 @@
             <table>
                 <thead>
                     <tr>
-                        <th>{{m.monthName}} - {{c.year}}</th>
+                        <th colspan='7'>{{m.monthName}} - {{c.year}}</th>
                     </tr>
                     <tr>
                         <th>Sun</th>
@@ -36,8 +36,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr ng-repeat="w in m.weeks">
+                        <td ng-repeat="d in w">
 
+                        </td>
                     </tr>
                 </tbody>
             </table>

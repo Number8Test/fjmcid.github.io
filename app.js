@@ -3,6 +3,13 @@
 
     function CalendarController(holidayService) {
         var c = this;
+
+
+        function addDays(date, days) {
+            var newDate = new Date(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            return newDate;
+        }
+
         c.startDate = new Date(2017, 4, 1);
         c.days = 5;
         c.year = c.startDate.getFullYear();
@@ -16,14 +23,26 @@
 
         function UpdateCalendar() {
             c.dates = [];
-            c.endDate = c.startDate;
+            c.endDate = addDays(c.startDate, c.days);
+            var numberOfMonths = c.endDate.getMonth() - c.startDate.getMonth();
             var daysProcessed = 0;
+            var date = c.startDate;
             var startingMonth = date.getMonth();
-            var numberOfMonths = 0;
             for (m = 0; m <= numberOfMonths; m++) {
-                c.currentMonth = date.GetMonth;
+                c.currentMonth = date.getMonth();
                 var formatter = new Intl.DateTimeFormat(c.countryCode, { month: 'long' });
                 var monthName = formatter.format(date);
+                c.today = date.getDate();
+
+                var daysInMonth = getDaysInMonth(c.currentMonth + 1, c.year);
+                var numberOfWeeks = Math.floor((daysInMonth + c.startDate.getDay()) / 7) + 1;
+
+                var weeks = [];
+                daysNumber = 1;
+
+                for (i = 0; i < numberOfWeeks; i++) {
+                    weeks[i] = [];
+                }
 
                 var month = {
                     'monthName': monthName,
@@ -32,6 +51,10 @@
                 c.dates.push(month);
             }
 
+        };
+
+        function getDaysInMonth(month, year) {
+            return new Date(year, month, 0).getDate();
         };
 
         function GetHolidays() {
