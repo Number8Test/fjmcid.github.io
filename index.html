@@ -19,11 +19,11 @@
         <input type="text" ng-model="c.countryCode" ng-change="c.onChange()" />
         <input type="button" ng-click="c.onChange()" value="Update" />
 
-        <div class="calendar">
+        <div class="calendar" ng-repeat="m in c.dates">
             <table>
                 <thead>
                     <tr>
-                        <th></th>
+                        <th>{{m.monthName}} - {{c.year}}</th>
                     </tr>
                     <tr>
                         <th>Sun</th>
