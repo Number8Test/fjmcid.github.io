@@ -1,0 +1,26 @@
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="holiday.service.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+    <div ng-app="App" ng-controller="CalendarController as c">
+
+        <label>Start Date:</label>
+        <input type="date" ng-model="c.startDate" ng-change="c.onChange()" />
+        <label>Days: </label>
+        <input type="date" ng-model="c.days" ng-change="c.onChange()" />
+        <label>Country Code:</label>
+        <input type="date" ng-model="c.countryCode" ng-change="c.onChange()" />
+        <input type="button" ng-click="c.onChange()" value="Update" />
+
+    </div>
+
+</body>
+
+</html>
