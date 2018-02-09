@@ -37,8 +37,11 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="w in m.weeks">
-                        <td ng-repeat="d in w track by $index" ng-class="{'no-day': (d.number == ''), 'holiday' : (d.holiday == true) }">
-                            <span>{{d.number}}</span>
+                        <td ng-repeat="d in w track by $index" ng-class="{'no-day': (d.number == ''),'weekend' : (d.weekend == true),'weekday' : (d.weekend == false), 'holiday' : (d.holiday == true) }">
+                            <div class="tooltip">
+                                <span>{{d.number}}</span>
+                                <div class="tooltiptext">{{d.description}}</div>
+                            </div>
                         </td>
                     </tr>
                 </tbody>

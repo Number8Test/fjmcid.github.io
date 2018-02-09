@@ -16,9 +16,18 @@
         c.countryCode = 'US';
         c.dates = [];
         c.holidays = [];
+        c.show = false;
 
         c.onChange = function() {
             UpdateCalendar();
+        };
+
+        c.hoverIn = function() {
+            this.show = true;
+        };
+
+        c.hoverOut = function() {
+            this.show = false;
         };
 
         function UpdateCalendar() {
@@ -43,7 +52,12 @@
                 for (i = 0; i < numberOfWeeks; i++) {
                     weeks[i] = [];
                     for (j = 0; j < 7; j++) {
-                        weeks[i][j] = { 'number': '', 'description': '', 'holiday': false };
+                        weeks[i][j] = {
+                            'number': '',
+                            'description': '',
+                            'holiday': false,
+                            'weekend': false
+                        };
                         if (i == 0 && j < 1) {
                             //first week, normally incomplete
                         } else {
@@ -58,6 +72,9 @@
                                     if (h !== undefined) {
                                         weeks[i][j].holiday = true;
                                         weeks[i][j].description = h.name;
+                                    }
+                                    if (j == 0 || j == 6) {
+                                        weeks[i][j].weekend = true;
                                     }
                                     daysProcessed++
                                 }

@@ -19,9 +19,49 @@ thead {
 }
 
 .no-day {
-    background-color: gray;
+    background-color: gray !important;
 }
 
 .holiday {
-    background-color: green !important
+    background-color: orange !important;
+    opacity: .5;
+}
+
+.weekday {
+    background-color: green;
+    opacity: .5;
+}
+
+.weekend {
+    background-color: yellow !important;
+    opacity: .5;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+    color: black;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
 }
