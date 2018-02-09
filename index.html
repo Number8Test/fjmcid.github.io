@@ -14,13 +14,37 @@
         <label>Start Date:</label>
         <input type="date" ng-model="c.startDate" ng-change="c.onChange()" />
         <label>Days: </label>
-        <input type="date" ng-model="c.days" ng-change="c.onChange()" />
+        <input type="text" ng-model="c.days" ng-change="c.onChange()" />
         <label>Country Code:</label>
-        <input type="date" ng-model="c.countryCode" ng-change="c.onChange()" />
+        <input type="text" ng-model="c.countryCode" ng-change="c.onChange()" />
         <input type="button" ng-click="c.onChange()" value="Update" />
 
-    </div>
+        <div class="calendar">
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <th>Sun</th>
+                        <th>M</th>
+                        <th>K</th>
+                        <th>W</th>
+                        <th>T</th>
+                        <th>F</th>
+                        <th>Sat</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
 
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
 </body>
 
 </html>
